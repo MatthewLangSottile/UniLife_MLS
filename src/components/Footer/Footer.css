@@ -1,0 +1,16 @@
+.footer-top {
+    background-color: var(--C_lightBlue);
+    height: 374px;
+
+}
+
+.footer-bottom {
+    background-color: var(--C_black);
+    color: var(--C_white);
+    height: 97px;
+}
+
+.footer-link {
+    text-decoration: none;
+    color: var(--C_white);
+}

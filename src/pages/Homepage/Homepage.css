@@ -1,0 +1,11 @@
+.homepage-container {
+    min-height: calc(100vh - 531px);
+    text-align: center;
+    /* display: flex; 
+    flex-direction: column;
+    align-items: center; */
+}
+
+.homepage-header {
+    padding-top: 60px;
+}
