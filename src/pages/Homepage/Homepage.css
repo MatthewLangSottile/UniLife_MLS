@@ -9,3 +9,75 @@
 .homepage-header {
     padding-top: 60px;
 }
+
+.compare-container {
+    background-color: var(--C_blueBG);
+    margin: 0 50px;
+    border-radius: 15px;
+    padding: 0 45px;
+    width: 1280px;
+    height: 488px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    
+}
+
+.compare-three-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.compare-item {
+    width: 360px;
+    height: 251px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+
+}
+
+.best-container {
+    display: flex;
+    justify-content: space-evenly;
+    /* align-items: flex-end; */
+    align-items: center;
+}
+
+.best-left-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+
+}
+
+.best-left-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    text-align: left;
+    width: 440px;
+    height: 148px;
+}
+
+.best-section-icon {
+    position: absolute;
+    top: 20px;
+    left: -85px;
+}
+
+.phone-man-image {
+    height: 101%;
+    width: 101%;
+    z-index: 1;
+    position: relative;
+}
+
+.search-compare-button {
+    width: 240px;
+    height: 48px;
+}

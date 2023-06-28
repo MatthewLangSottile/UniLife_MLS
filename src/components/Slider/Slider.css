@@ -11,7 +11,7 @@
     
 }
 
-.city-search-form {
+/* .city-search-form {
     background-color: var(--C_white);
     width: 1112px;
     height: 128px;
@@ -35,7 +35,7 @@
     width: 349px;
     height: 48px;
     border-radius: 10px;
-}
+} */
 
 #overlay {
     position: fixed; /* Sit on top of the page content */

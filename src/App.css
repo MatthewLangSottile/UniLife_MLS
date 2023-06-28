@@ -10,6 +10,7 @@
   --C_lightGray: #CED3D8;
   --C_darkGray: #383838;
   --C_white: #FFFFFF;
+  --C_blueBG: #F6FAFD;
 }
 
 *{
@@ -29,6 +30,11 @@ h2 {
   font-size: 36px;
 }
 
+h3 {
+  font-weight: 500;
+  font-size: 28px;
+}
+
 h4 {
   font-weight: 400;
   font-size: 24px;
@@ -38,6 +44,12 @@ button {
   background-color: var(--C_darkBlue);
   color: var(--C_white);
   border-style: none;
+  border-radius: 15px;
+}
+
+p {
+  font-weight: 400;
+  font-size: 20px;
 }
 
 

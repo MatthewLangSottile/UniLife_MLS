@@ -1,7 +1,9 @@
 .footer-top {
     background-color: var(--C_lightBlue);
     height: 374px;
-
+    z-index: 2;
+    position: relative;
+    color: var(--C_white)
 }
 
 .footer-bottom {
@@ -10,7 +12,21 @@
     height: 97px;
 }
 
-.footer-link {
+.footer-link-top {
     text-decoration: none;
     color: var(--C_white);
+}
+
+.footer-link-bottom {
+    text-decoration: none;
+    color: var(--C_white);
+    filter:opacity(60%);
+}
+
+.footer-top-left {
+
+}
+
+.footer-top-right {
+
 }
