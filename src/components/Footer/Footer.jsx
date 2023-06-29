@@ -31,9 +31,16 @@ function Footer() {
         </div>
       </div>
       <div className="footer-bottom">
-        <Link className="footer-link-bottom">
-        Footer bottom
-        </Link>
+        <div className="footer-bottom-left">
+        <Link className="footer-link-bottom">About Us</Link>
+        <Link className="footer-link-bottom">Terms & Conditions</Link>
+        <Link className="footer-link-bottom">Privacy & Cookie Policies</Link>
+        </div>
+        <div className="footer-bottom-right">
+          <p className="copyright">2022</p>
+          <p className="copyright">&copy; Unilife</p>
+        </div>
+        
       </div>
     </div>
   )
