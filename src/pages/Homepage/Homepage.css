@@ -1,32 +1,33 @@
 .homepage-container {
     min-height: calc(100vh - 531px);
     text-align: center;
-    /* display: flex; 
-    flex-direction: column;
-    align-items: center; */
+
 }
 
 .homepage-header {
     padding-top: 60px;
 }
 
+.hp-static-container {
+    margin: 0 50px;
+}
+
 .compare-container {
     background-color: var(--C_blueBG);
-    margin: 0 50px;
     border-radius: 15px;
     padding: 0 45px;
-    width: 1280px;
     height: 488px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    
+
 }
 
 .compare-three-container {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    
 }
 
 .compare-item {
@@ -41,15 +42,15 @@
 
 .best-container {
     display: flex;
-    justify-content: space-evenly;
-    /* align-items: flex-end; */
+    justify-content: space-between;
     align-items: center;
+    margin: 0 50px;
 }
 
 .best-left-container {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    /* align-items: flex-start; */
     justify-content: space-evenly;
 
 }
@@ -57,27 +58,77 @@
 .best-left-item {
     position: relative;
     display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    text-align: left;
+    align-items: flex-start;
     width: 440px;
     height: 148px;
 }
 
-.best-section-icon {
+.best-left-item-left {
+    display: flex;
+    flex-direction: column;
+    align-items: space-evenly;
+    justify-content: flex-start;
+}
+
+.best-left-item-right {
+    text-align: left;
+}
+
+/* .best-section-icon {
     position: absolute;
     top: 20px;
     left: -85px;
-}
+} */
 
-.phone-man-image {
-    height: 101%;
+/* .phone-man-image {
+    height: %;
     width: 101%;
-    z-index: 1;
-    position: relative;
-}
+    z-index: 1; 
+     position: relative;
+} */
 
 .search-compare-button {
     width: 240px;
     height: 48px;
 }
+
+.top-cities-container {
+  
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 300px);
+    gap: 30px;
+    color: var(--C_white);    
+    margin: 50px;
+    justify-self: center;
+   }
+
+.top-cities-card {
+    border-radius: 15px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-position: center;
+    background-size: cover;
+    }
+
+.top-cities-card p {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.top-cities-card p, h5 {
+    position: relative;
+}
+
+#card-overlay {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.3); /* Black background with opacity */
+    border-radius: 15px;
+    position: absolute;
+  
+  }

@@ -16,6 +16,9 @@
     width: 558px;
     height: 48px;
     border-radius: 10px;
+    padding: 5px 25px;
+    color: var(--C_lightGray);
+    border-color: var(--C_lightGray);
 }
 
 .city-search-button {
