@@ -1,13 +1,32 @@
 .housing-filter-form {
     background-color: var(--C_white);
-    width: 1112px;
-    height: 128px;
+    width: 1279px;
+    height: 176px;
     border-radius: 15px;
     position: absolute;
-    bottom: 0;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
+    top: 390px;
+    left: calc(50% - 640px);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* justify-content: space-evenly;
+    align-items: center; */
     filter: drop-shadow(0 5px 10px var(--C_darkGray));
     z-index: 1;
+}
+
+.filter-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    text-align: left;
+    margin-left: 20px;
+}
+
+.housing-filter-select {
+    width: 282px;
+    height: 48px;
+    border-radius: 15px;
+    margin-top: 10px;
+    padding-left: 15px;
 }

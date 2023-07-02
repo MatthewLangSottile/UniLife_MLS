@@ -17,7 +17,6 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    /* background-color: green; */
     width: 160px;
 }
 
@@ -25,7 +24,6 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    /* background-color: orange; */
     width: 235px;
 }
 

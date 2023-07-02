@@ -31,7 +31,7 @@ function Slider(props) {
             <div className="slider-content">
             <h1 className="slider-header">Search Accomodation</h1>
             <h4 className="slider-header">Whatever you're after, we can help you find the right student accommodation for you. </h4>
-            <HousingFilter />
+            {/* <HousingFilter /> */}
             </div>
           }
     </div>

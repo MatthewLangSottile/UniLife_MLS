@@ -9,20 +9,17 @@ import Bathtub from "../../assets/bathtub.svg"
 import Homepin from "../../assets/homepin.svg"
 import Home from "../../assets/home.svg"
 import CityInfoImg from "../../assets/cityinfoimage.png"
-// import { AllPropertiesInCity } from '../../contexts/AllPropertiesInCity';
+import HousingFilter from '../../components/HousingFilter/HousingFilter';
+
 
 
 function CityDetails() {
 
-  // // use context
-  // const {cityProperties} = useContext(AllPropertiesInCity)
-  // console.log(cityProperties)
-
   //get cityid from url
   const {cityid} = useParams();
   
-  //state to hold currently displayed properties
-  const [displayedProperties, setDisplayedProperties] = useState([])
+  // //state to hold currently displayed properties
+  // const [displayedProperties, setDisplayedProperties] = useState([])
 
   //state to hold current city property data object
   const [cityProperties, setCityProperties] = useState([])
@@ -30,6 +27,44 @@ function CityDetails() {
   //state to hold city information 
   const [cityInfo, setCityInfo] = useState("")
 
+  //state to hold formatted max rent prices
+  const [rentPriceArr, setRentPriceArr] = useState([])
+  //state to hold formatted housing types
+  const [housingTypeArr, setHousingTypeArr] = useState([])
+  //state to hold formatted min bathroom
+  const [minBathArr, setMinBathArr] = useState([])
+  //state to hold formatted min bedroom
+  const [minBedArr, setMinBedArr] = useState([])
+
+  const formatRent= (dataSet) => {
+    let limited = dataSet.map((property) => property.rent);
+    let dupeRem = [...new Set(limited)];
+    let sorted = dupeRem.sort(function(a, b){return a-b});
+    return sorted;
+  }
+
+  const formatBedrooms= (dataSet) => {
+    let limited = dataSet.map((property) => property.bedroom_count);
+    let dupeRem = [...new Set(limited)];
+    let sorted = dupeRem.sort(function(a, b){return a-b});
+    return sorted;
+  }
+
+  const formatBathrooms= (dataSet) => {
+    let limited = dataSet.map((property) => property.bathroom_count);
+    let dupeRem = [...new Set(limited)];
+    let sorted = dupeRem.sort(function(a, b){return a-b});
+    return sorted;
+  }
+
+  const formatHousing= (dataSet) => {
+    let limited = dataSet.map((property) => property.property_type);
+    let dupeRem = [...new Set(limited)];
+    let sorted = dupeRem.sort();
+    return sorted;
+  }
+
+  
 
   //useeffect1 on load, empty array at end
   useEffect (
@@ -47,13 +82,17 @@ function CityDetails() {
       .then(res => {
         console.log(res.data.response)
         setCityProperties(res.data.response)
+
+
+      setRentPriceArr(formatRent(res.data.response))
+      setHousingTypeArr(formatHousing(res.data.response))
+      setMinBathArr(formatBathrooms(res.data.response))
+      setMinBedArr(formatBedrooms(res.data.response))
+      // setDisplayedProperties(res.data.response)
+      
+        
       })
       .catch(err => console.log(err))
-
-
-
-
-
     }, []
   ) 
 
@@ -61,9 +100,16 @@ function CityDetails() {
   
 
   return (
-    <div>
+    <div className="city-details-page">
+      
       <Slider path={location.pathname}/>
       <div className="city-details-container">
+          <HousingFilter 
+          rentArr={rentPriceArr}
+          housingArr={housingTypeArr}
+          bathArr={minBathArr}
+          bedArr={minBedArr}
+          />
           <h2>{cityProperties.length} homes in {cityInfo.name}</h2>
           <div className="city-properties-grid">
           {cityProperties.map((item) => 
