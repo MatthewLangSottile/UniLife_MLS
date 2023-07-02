@@ -45,6 +45,7 @@
     justify-content: space-between;
     align-items: center;
     margin: 0 50px;
+    
 }
 
 .best-left-container {
@@ -74,22 +75,26 @@
     text-align: left;
 }
 
-/* .best-section-icon {
-    position: absolute;
-    top: 20px;
-    left: -85px;
+/* .best-right-container {
+    position: relative;
 } */
 
+.all-cities-button {
+    width: 200px;
+    height: 48px;
+    margin-bottom: 50px;
+}
+
 /* .phone-man-image {
-    height: %;
-    width: 101%;
-    z-index: 1; 
-     position: relative;
+    position: absolute;
+    right: 500px;
+    top: 0;
 } */
 
 .search-compare-button {
     width: 240px;
     height: 48px;
+    
 }
 
 .top-cities-container {
@@ -121,6 +126,14 @@
 
 .top-cities-card p, h5 {
     position: relative;
+    text-decoration: none;
+    color: var(--C_white);
+    
+}
+
+.top-cities-container a {
+    text-decoration: none;
+    
 }
 
 #card-overlay {

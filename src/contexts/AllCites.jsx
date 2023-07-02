@@ -18,9 +18,10 @@ export default function AllCitiesProvider(props) {
               const res = await  axios.get(`https://unilife-server.herokuapp.com/cities`)
               const totalCityCount = res?.data?.total
               console.log(totalCityCount)
+              //second call for all cities once we can set the limit
               const result = await axios.get(`https://unilife-server.herokuapp.com/cities?limit=${totalCityCount}`)
               setCities(result?.data.response)  
-              console.log(result?.data.response.name)
+              // console.log(result?.data.response.name)
               
       
             }

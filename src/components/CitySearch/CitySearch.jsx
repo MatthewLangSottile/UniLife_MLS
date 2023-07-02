@@ -1,6 +1,5 @@
 import React, {useState, useEffect,useContext} from 'react'
 import "./CitySearch.css"
-import axios from "axios"
 import { AllCities } from '../../contexts/AllCites'
 
 
@@ -22,7 +21,7 @@ const [selectedCity, setSelectedCity] = useState()
 
   return (
        <form className="city-search-form">
-        <select name="city-search-select" className="city-search-select">
+        <select name="city-id" className="city-search-select">
           <option>Search by city</option>
           {cities.map((item) => (
           <option key={item._id} value={item._id}>

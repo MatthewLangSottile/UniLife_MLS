@@ -1,0 +1,13 @@
+.housing-filter-form {
+    background-color: var(--C_white);
+    width: 1112px;
+    height: 128px;
+    border-radius: 15px;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    filter: drop-shadow(0 5px 10px var(--C_darkGray));
+    z-index: 1;
+}

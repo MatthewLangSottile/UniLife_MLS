@@ -8,7 +8,7 @@
     background-size: 100% 87%;
     background-repeat: no-repeat;
     position: relative;
-    
+
 }
 
 #overlay {
@@ -21,7 +21,8 @@
     right: 0;
     bottom: 0;
     background-color: rgba(0,0,0,0.5); /* Black background with opacity */
-    z-index: 0; /* Specify a stack order in case you're using a different order for other elements */
+    /* z-index: 0;  */
+    /* Specify a stack order in case you're using a different order for other elements */
     position: absolute;
   }
 

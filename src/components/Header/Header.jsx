@@ -8,11 +8,12 @@ import {Link} from "react-router-dom"
 function Header() {
   return (
     <div className='header-container'>
+      <Link to="/">
         <div className="header-left">
             <MdOutlineHolidayVillage className="header-icon" />
             <img src={logo} />
-
         </div>
+        </Link>
         <div className="header-right">
             <Link className="header-link">
             <AiOutlineHeart className="header-link-icon"/>

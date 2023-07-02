@@ -1,0 +1,57 @@
+.city-prop-card-img {
+    width: 400px;
+    border-radius: 15px 15px 0 0;
+}
+
+.city-properties-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    gap: 25px;  
+}
+
+.city-properties-card {
+    border: 1px solid var(--C_lightGray);
+    border-radius: 15px;
+
+}
+
+.city-prop-card-row2 {
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--C_darkBlue);
+    color: var(--C_white)
+}
+
+.city-prop-card-row2 p {
+    text-decoration: none;
+}
+
+.city-prop-card-row2-left {
+    display: flex;
+    flex-direction: column;
+}
+
+.city-prop-card-row2-right {
+    display: flex;
+    align-items: center;
+    
+}
+
+.city-prop-card-row3-top {
+    display: flex;
+    justify-content: space-between;
+}
+
+.city-prop-card-row3-bottom {
+    display: flex;
+}
+
+.city-prop-card-row4 {
+    display: flex;
+    border-top: 1px solid var(--C_lightGray);
+    text-decoration: none;
+    color: var(--C_black);
+    justify-content: center;
+}
+

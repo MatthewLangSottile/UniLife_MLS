@@ -8,6 +8,7 @@ import PhoneMan from "../../assets/phoneman.png"
 import BestIcon from "../../assets/best.svg"
 import Heart from "../../assets/heart.svg"
 import { AllCities } from '../../contexts/AllCites'
+import {Link} from "react-router-dom"
 
 
 
@@ -18,22 +19,24 @@ function Homepage() {
 
   const {cities} = useContext(AllCities)
 
+  
+
   return (
-    <div className="homepage-container">
-      <Slider />
+    <div className="homepage-container" >
+      <Slider path={location.pathname}/>
       <h2 className="homepage-header">Student accommodations in our top cities</h2>
       <div className="top-cities-container">
       {cities.map((item, index) => 
       index < 9 && (
-          <div className="top-cities-card" key={item._id} value={item._id} style={{backgroundImage: `url(${item.image_url})`}}>
+          <Link to={`/citydetails/${item?._id}`} className="top-cities-card" key={item._id} value={item._id} style={{backgroundImage: `url(${item.image_url})`}}>
             <div id="card-overlay"></div>
             <h5>{item.name}</h5>
             <p>{item.property_count} properties</p>
-          </div>
+          </Link>
         ))} 
       </div>
       <div className="hp-static-container">
-      <button>See All Cities</button>
+      <Link to="/seeallcities"><button className="all-cities-button">See All Cities</button></Link>
         <div className="compare-container">
           <h2 className="compare-header">Compare all inclusive student homes</h2>
           <div className="compare-three-container">
