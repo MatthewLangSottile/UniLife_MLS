@@ -1,7 +1,6 @@
-import React, {useState, useContext, useEffect} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 import "./CityDetails.css"
 import Slider from '../../components/Slider/Slider';
-// import { AllCities } from '../../contexts/AllCites';
 import axios from 'axios';
 import {useParams} from "react-router-dom"
 import {Link} from "react-router-dom"
@@ -9,8 +8,15 @@ import Bed from "../../assets/bed.svg"
 import Bathtub from "../../assets/bathtub.svg"
 import Homepin from "../../assets/homepin.svg"
 import Home from "../../assets/home.svg"
+import CityInfoImg from "../../assets/cityinfoimage.png"
+// import { AllPropertiesInCity } from '../../contexts/AllPropertiesInCity';
+
 
 function CityDetails() {
+
+  // // use context
+  // const {cityProperties} = useContext(AllPropertiesInCity)
+  // console.log(cityProperties)
 
   //get cityid from url
   const {cityid} = useParams();
@@ -43,10 +49,16 @@ function CityDetails() {
         setCityProperties(res.data.response)
       })
       .catch(err => console.log(err))
+
+
+
+
+
     }, []
   ) 
 
   //useeffect2 on HousingFilter Change
+  
 
   return (
     <div>
@@ -94,7 +106,7 @@ function CityDetails() {
                   <p>{cityInfo.universities}</p>
               </div>
              <div className="city-info-image">
-              STATIC IMAGE HERE
+              <img src={CityInfoImg}/>
               </div> 
           </div>
       </div>

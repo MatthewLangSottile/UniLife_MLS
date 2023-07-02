@@ -11,24 +11,23 @@ import HomeDetails from './pages/HomeDetails/HomeDetails';
 
 
 
-
-
-
-
-
 function App() {
 
   return (
     <BrowserRouter>
     <Header />
+    
     <AllCitiesProvider>
+    
       <Routes>
         <Route path="/" element={<Homepage />} />
-        <Route path="/seeallcities" element={<SeeAllCities />} />
+        <Route path="/seeallcities" element={<SeeAllCities />} />  
         <Route path="/citydetails/:cityid" element={<CityDetails />} />
         <Route path="/homedetails/:homeid" element={<HomeDetails />} />
       </Routes>
+      
       </AllCitiesProvider>
+      
     <Footer />
     </BrowserRouter>
   )

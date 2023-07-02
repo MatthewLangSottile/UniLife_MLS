@@ -1,5 +1,5 @@
 .city-prop-card-img {
-    width: 400px;
+    width: 100%;
     border-radius: 15px 15px 0 0;
 }
 
@@ -7,12 +7,16 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: auto;
-    gap: 25px;  
+    gap: 30px; 
+    margin: 50px;
 }
 
 .city-properties-card {
     border: 1px solid var(--C_lightGray);
     border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+
 
 }
 
@@ -53,5 +57,9 @@
     text-decoration: none;
     color: var(--C_black);
     justify-content: center;
+}
+
+.city-info-section {
+    display: flex;
 }
 
