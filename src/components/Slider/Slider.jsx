@@ -2,7 +2,7 @@ import React from 'react'
 import "./Slider.css"
 import CoverImg from "../../assets/cover-img.png"
 import CitySearch from '../CitySearch/CitySearch'
-import HousingFilter from '../HousingFilter/HousingFilter';
+// import HousingFilter from '../HousingFilter/HousingFilter';
 
 
 

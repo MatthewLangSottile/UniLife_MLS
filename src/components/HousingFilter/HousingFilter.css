@@ -1,4 +1,4 @@
-.housing-filter-form {
+/* .housing-filter-form {
     background-color: var(--C_white);
     width: 1279px;
     height: 176px;
@@ -7,10 +7,12 @@
     top: 390px;
     left: calc(50% - 640px);
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, 1fr); */
+
     /* justify-content: space-evenly;
     align-items: center; */
-    filter: drop-shadow(0 5px 10px var(--C_darkGray));
+
+    /* filter: drop-shadow(0 5px 10px var(--C_darkGray));
     z-index: 1;
 }
 
@@ -29,4 +31,4 @@
     border-radius: 15px;
     margin-top: 10px;
     padding-left: 15px;
-}
+} */

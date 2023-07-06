@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext} from 'react'
+import React, {useState, useEffect} from 'react'
 import "./CityDetails.css"
 import Slider from '../../components/Slider/Slider';
 import axios from 'axios';
@@ -9,7 +9,7 @@ import Bathtub from "../../assets/bathtub.svg"
 import Homepin from "../../assets/homepin.svg"
 import Home from "../../assets/home.svg"
 import CityInfoImg from "../../assets/cityinfoimage.png"
-import HousingFilter from '../../components/HousingFilter/HousingFilter';
+// import HousingFilter from '../../components/HousingFilter/HousingFilter';
 
 
 
@@ -35,6 +35,9 @@ function CityDetails() {
   const [minBathArr, setMinBathArr] = useState([])
   //state to hold formatted min bedroom
   const [minBedArr, setMinBedArr] = useState([])
+
+  //state to hold housingFilterQuery
+  const [housingFilterQuery, setHousingFilterQuery] = useState("")
 
   const formatRent= (dataSet) => {
     let limited = dataSet.map((property) => property.rent);
@@ -63,6 +66,30 @@ function CityDetails() {
     let sorted = dupeRem.sort();
     return sorted;
   }
+
+  const buildPropertyFilter = (bedroom, bathroom, price, type) => {
+          const query = {
+          city_id: cityid,
+          bedroom_count: bedroom,
+          bathroom_count: bathroom,
+          rent: price,
+          property_type: type
+        }
+        console.log(query)
+        // setHousingFilterQuery(query)
+        
+                    // submit request for filtered properties
+                    axios.post("https://unilife-server.herokuapp.com/properties/filter", {query})
+                    .then(function (response) {
+                      console.log(response.data.message);
+                      console.log(response.data.response)
+                      setCityProperties(response.data.response)
+                    })
+                    .catch(function (error) {
+                      console.log(error);
+                    });
+          
+      }
 
   
 
@@ -96,26 +123,99 @@ function CityDetails() {
     }, []
   ) 
 
-  //useeffect2 on HousingFilter Change
-  
+  //useeffect2 on HousingFilter query Change
+  // useEffect (
+  // () => {
+  //           // submit email to api for subscription
+  //           axios.post("https://unilife-server.herokuapp.com/properties/filter", {housingFilterQuery})
+  //           .then(function (response) {
+  //             console.log(response.data.message);
+  //             setCityProperties(response.data)
+  //           })
+  //           .catch(function (error) {
+  //             console.log(error);
+  //           });
+  //   }, [housingFilterQuery]
+  // ) 
 
   return (
     <div className="city-details-page">
       
       <Slider path={location.pathname}/>
       <div className="city-details-container">
-          <HousingFilter 
-          rentArr={rentPriceArr}
+      <form className="housing-filter-form">
+        <div className="filter-col">
+        <label htmlFor="min-bedroom">Min Bedroom</label>
+        <select name="min-bedroom" 
+        id="min-bedroom" 
+        className="housing-filter-select"
+        //NC for no change in this part of the query
+        onChange={(e) => buildPropertyFilter( e.target.value, "", "","")}
+        >
+          <option>Any bedroom</option>
+          {minBedArr.map((bedOption, index) => 
+          (
+          <option key={index}>{bedOption}</option>
+        ))} 
+        </select>
+        </div>
+        <div className="filter-col">
+        <label htmlFor="min-bathroom">Min Bathroom</label>
+        <select 
+        name="min-bathroom" 
+        id="min-bathroom" 
+        className="housing-filter-select"
+        onChange={(e) => buildPropertyFilter("", e.target.value,  "","")}
+        >
+          <option>Any bathroom</option>
+          {minBathArr.map((bathOption, index) => 
+          (
+          <option key={index}>{bathOption}</option>
+        ))} 
+        </select>
+        </div>
+        <div className="filter-col">
+        <label htmlFor="max-price">Max Price</label>
+        <select 
+        name="max-price" 
+        id="max-price" 
+        className="housing-filter-select"
+        onChange={(e) => buildPropertyFilter("", "", e.target.value, "")}
+        >
+          <option>Any price</option>
+          {rentPriceArr.map((priceOption, index) => 
+          (
+          <option key={index}>{priceOption}</option>
+        ))} 
+          </select>
+        </div>
+        <div className="filter-col">
+        <label htmlFor="home-type">Home Type</label>
+        <select 
+        name="home-type" 
+        id="home-type" 
+        className="housing-filter-select"
+        onChange={(e) => buildPropertyFilter("", "", "", e.target.value)}
+        >
+          <option>Any type</option>
+          {housingTypeArr.map((typeOption, index) => 
+          (
+          <option key={index}>{typeOption}</option>
+        ))} 
+        </select>
+        </div>
+    </form>
+          {/* rentArr={rentPriceArr}
           housingArr={housingTypeArr}
           bathArr={minBathArr}
           bedArr={minBedArr}
-          />
-          <h2>{cityProperties.length} homes in {cityInfo.name}</h2>
+          /> */}
+          <h2>{cityProperties?.length} homes in {cityInfo?.name}</h2>
           <div className="city-properties-grid">
           {cityProperties.map((item) => 
         (
           <div className="city-properties-card" key={item._id}>
-              <img className="city-prop-card-img" src={item.images[0]} />
+              <img className="city-prop-card-img" src={item?.images[0]} />
               <div className="city-prop-card-row2">
                   <div className="city-prop-card-row2-left">
                       <p>${item.rent}</p>
@@ -135,7 +235,7 @@ function CityDetails() {
                   </div>
                   <div className="city-prop-card-row3-bottom">
                     <img src={Homepin}/>
-                    <p>{item.address.street}, {item.address.city}, {item.address.postcode}</p>
+                    <p>{item?.address?.street}, {item?.address?.city}, {item?.address?.postcode}</p>
                   </div>
               </div>
               <Link to={`/homedetails/${item?._id}`} className="city-prop-card-row4">

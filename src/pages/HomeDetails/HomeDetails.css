@@ -1,0 +1,48 @@
+.home-details-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 50px 556px 347px 328px;
+    grid-template-areas: 
+    "backtosearch backtosearch"
+    "imagegallery home-details"
+    "description bedprices"
+    "keyfeatures keyfeatures"
+}
+
+.home-image-gallery {
+    grid-area: imagegallery
+}
+
+.back-to-search {
+    grid-area: backtosearch
+}
+
+.home-details {
+    grid-area: home-details
+}
+
+.home-description {
+    grid-area: description
+}
+
+.home-bedroom-prices {
+    grid-area: bedprices
+}
+
+.home-key-features {
+    grid-area: keyfeatures
+}
+
+.home-icon-summary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, auto);
+}
+
+.home-icon-heading {
+    color: var(--C_black)
+}
+
+.home-icon-value {
+    color: var(--C_darkBlue)
+}
