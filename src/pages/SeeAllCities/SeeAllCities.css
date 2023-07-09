@@ -1,0 +1,22 @@
+.all-city-search-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+}
+
+.all-city-grid-item {
+    color: var(--C_black);
+    text-decoration: none;
+    text-align: center;
+    border: 1px solid var(--C_lightGray);
+    border-radius: 15px;
+}
+
+.all-city-grid-item:hover {
+    background-color: var(--C_darkBlue);
+    color: var(--C_white)
+}
+
+
+
+

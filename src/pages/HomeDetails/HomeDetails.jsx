@@ -11,9 +11,11 @@ function HomeDetails() {
 
   const {homeid} = useParams();
 
-  //state to hold current cuproperty data object
+  //state to hold current property data object
   const [homeDetails, setHomeDetails] = useState([])
-
+  const [featuredImage, setFeaturedImage] = useState(3)
+ 
+  
   //useeffect1 on load, empty array at end
   useEffect (
     () => {   
@@ -22,20 +24,39 @@ function HomeDetails() {
       .then(res => {
         console.log(res.data)
         setHomeDetails(res.data)
+
+        // setImageGallery(buildImageGalleryArray(res.data.images))
+        
+        // let bedprices = res.data.bedproom_prices
+        // for (var key in bedprices) {
+        //   if (bedprices.hasOwnProperty(key)) {
+        //     bedprices[key]
+        //   }
+        // }
              
       })
       .catch(err => console.log(err))
     }, []
   ) 
+
+
+
   return (
     <div className="home-details-container">
-      <Link className="back-to-search" to="/citydetails/:cityid"><IoIosArrowBack />Back to Search </Link>
+      <Link to={`/citydetails/${homeDetails?.city_id?._id}`} className="back-to-search" ><IoIosArrowBack />Back to Search </Link>
       <div className="home-image-gallery">
-          Image gallery
+          <img className="home-featured-image" src={homeDetails?.images?.[featuredImage]} />
+          <div className="home-image-selection">
+              <img className="home-single-image" src={homeDetails?.images?.[0]} onClick={() => setFeaturedImage(0)} />
+              <img className="home-single-image" src={homeDetails?.images?.[1]} onClick={() => setFeaturedImage(1)} />
+              <img className="home-single-image" src={homeDetails?.images?.[2]} onClick={() => setFeaturedImage(2)} />
+              <img className="home-single-image" src={homeDetails?.images?.[3]} onClick={() => setFeaturedImage(3)} />
+
+          </div>
       </div>
       <div className="home-details">
             <div className="home-address">
-            <h2>{homeDetails?.address?.street}, {homeDetails?.address?.city}, {homeDetails?.address?.postcode}</h2>
+            <h6>{homeDetails?.address?.street}, {homeDetails?.address?.city}, {homeDetails?.address?.postcode}</h6>
             </div>
             <div className="home-icon-summary">
                 <div className="home-icon-summary-TL">
@@ -66,17 +87,23 @@ function HomeDetails() {
                     <p className="home-icon-heading">Available from</p>
                     <p className="home-icon-value">{homeDetails?.availability}</p>
                 </div>
-
+                <div className="home-icon-buttons">
+                  <button>Shortlist</button>
+                  <button>Book Viewing</button>
+                </div>
             </div>
       </div>
       <div className="home-description">
-          Description
+          <h6>Description</h6>
+          <p>{homeDetails?.property_description}</p>
       </div>
       <div className="home-bedroom-prices">
-          Bedroom prices
+          <h6>Bedroom Prices</h6>
+          
       </div>
       <div className="home-key-features">
-          Key features
+          <h6>Key features</h6>
+          {/* Map for the number of key features */}
       </div>
 
     </div>

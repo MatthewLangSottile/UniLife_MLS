@@ -45,6 +45,11 @@ h5 {
   font-size: 40px;
 }
 
+h6 {
+  font-weight: 400;
+  font-size: 36px;
+}
+
 button {
   background-color: var(--C_darkBlue);
   color: var(--C_white);

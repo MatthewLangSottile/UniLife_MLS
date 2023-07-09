@@ -25,7 +25,7 @@ function handleSelectedCity (e) {
         <select name="city-id" className="city-search-select" onChange={handleSelectedCity}>
           <option >Search by city</option>
           {cities.map((item) => (
-          <option key={item._id} value={item._id}>
+          <option  key={item._id} value={item._id}>
             {item.name}
           </option>
         ))}
