@@ -36,4 +36,70 @@
     margin-right: 10px;
 }
 
+.contact-us-form {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-rows: repeat(7, auto);
+    grid-template-areas:
+    "nameLab emailLab"
+    "name email"
+    "phoneLab msgLab"
+    "phone msg"
+    "userLab msg"
+    "user msg"
+    ". sub";
+    gap: 35px;
+}
+
+.contact-modal-toprow {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.name-label {
+    grid-area: nameLab
+}
+
+.name-input {
+    grid-area: name
+}
+
+.email-label {
+    grid-area: emailLab
+}
+
+.email-input {
+    grid-area: email
+}
+
+.phone-label {
+    grid-area: phoneLab
+}
+
+.phone-input {
+    grid-area: phone
+}
+
+.message-label {
+    grid-area: msgLab
+}
+
+.message-area {
+    grid-area: msg
+}
+
+.user-type-label {
+    grid-area: userLab
+}
+
+.user-type-select {
+    grid-area: user
+}
+
+.form-submit {
+    grid-area: sub
+}
+
+
 

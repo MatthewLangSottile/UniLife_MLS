@@ -7,6 +7,8 @@ import {IoIosArrowBack} from "react-icons/io"
 import {LiaBedSolid} from "react-icons/lia"
 import {AiOutlineHeart} from "react-icons/ai"
 import {AiOutlineCheck} from "react-icons/ai"
+import Modal from "react-modal"
+import AddHome from "../../assets/addhome.svg"
 
 
 function HomeDetails() {
@@ -21,6 +23,25 @@ function HomeDetails() {
   const [homeBedroomPrices, setHomeBedroomPrices] = useState("")
   //state to hold keyfeatures array
   const [homeKeyFeatures, setHomeKeyFeatures] = useState([])
+    //state to control bookviewing modal
+    const [isOpen, setIsOpen] = useState(false)
+
+    const customStyles = {
+      content: {
+        height: "714px",
+        width: "936px",
+        top: '50%',
+        left: '50%',
+        right: 'auto',
+        bottom: 'auto',
+        marginRight: '-50%',
+        transform: 'translate(-50%, -50%)',
+        borderRadius: "15px",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-evenly"
+      },
+    };
  
   
   //useeffect1 on load, empty array at end
@@ -103,7 +124,33 @@ function HomeDetails() {
             </div>
             <div className="home-info-buttons">
                   <button class="button-with-icon button-white"><AiOutlineHeart /> Shortlist</button>
-                  <button>Book Viewing</button>
+                  <button onClick={()=>setIsOpen(true)}>Book Viewing</button>
+                  <Modal 
+            isOpen={isOpen}
+            onRequestClose={()=>setIsOpen(false)}
+            style={customStyles}
+            contentLabel="Book Viewing Modal"
+            >
+            <div className="booking-modal-toprow">
+                <h2>Book a Viewing</h2>
+                <img src={AddHome} />
+            </div>
+            <div className="booking-modal-address">
+                <p>{homeDetails?.address?.street}</p>
+                <p>{homeDetails?.address?.city}, {homeDetails?.address?.postcode}</p>
+            </div>
+            <form className="contact-us-form">
+                <label className="name-label" htmlFor="name">Name</label>
+                <input className="name-input" type="text" id="name"/>
+                <label className="email-label" htmlFor="email">Email</label>
+                <input className="email-input" type="email" id="email"/>
+                <label className="phone-label" htmlFor="phonenumber">Phone Number</label>
+                <input className="phone-input" type="tel" id="phonenumber"/>
+                <label className="message-label" htmlFor="message">Message</label>
+                <textarea className="message-area" id="message" rows="4"></textarea>
+                <button className="form-submit" type="submit">Submit</button>
+            </form>
+          </Modal>
                 </div>
       </div>
       <div className="home-description">
