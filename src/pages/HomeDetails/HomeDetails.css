@@ -4,9 +4,11 @@
     grid-template-rows: 50px 556px 347px 328px;
     grid-template-areas: 
     "backtosearch backtosearch"
-    "imagegallery home-details"
+    "imagegallery home-info"
     "description bedprices"
-    "keyfeatures keyfeatures"
+    "keyfeatures bedprices";
+    gap: 25px;
+    
 }
 
 .home-image-gallery {
@@ -28,40 +30,112 @@
 
 .home-single-image {
     width: 150px;
-    /* height: 140px; */
     border-radius: 15px;
 }
 
 .back-to-search {
-    grid-area: backtosearch
+    grid-area: backtosearch;
 }
 
-.home-details {
-    grid-area: home-details
+.home-info {
+    grid-area: home-info;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.home-info-top {
+    border: 1px solid var(--C_lightGray);
+    border-radius: 15px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+
 }
 
 .home-description {
-    grid-area: description
+    grid-area: description;
 }
 
 .home-bedroom-prices {
-    grid-area: bedprices
+    grid-area: bedprices;
 }
 
 .home-key-features {
-    grid-area: keyfeatures
+    grid-area: keyfeatures;
 }
 
-.home-icon-summary {
+.home-summary-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, auto);
+    justify-items: center;
+    align-items: center;
+    width: 90%;
+    border-top: 1px solid var(--C_lightGray);
+    padding-top: 100px;
+    gap: 35px;
+    /* background-color: green; */
 }
 
-.home-icon-heading {
-    color: var(--C_black)
+.home-summary-heading {
+    color: var(--C_black);
+    /* background-color: purple; */
 }
 
-.home-icon-value {
+.home-summary-detail {
+    color: var(--C_darkBlue);
+    /* background-color: blue; */
+    text-align: center;
+}
+
+.home-summary-detail.with-icon {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.home-info-buttons {
+    /* background-color: orange; */
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+}
+
+.home-info-buttons button {
+    width: 298px;
+    height: 48px;
+}
+
+.button-white {
+    background-color: var(--C_white);
+    color: var(--C_black);
+    border: 1px solid var(--C_lightGray);
+    
+}
+
+.home-bedroom-price-item {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--C_lightGray);
+}
+
+.bedroom-prices-detail {
+    border: 1px solid var(--C_lightGray);
+    border-radius: 15px;
+    height: 500px;
+}
+
+.home-key-feature-item {
+    display: flex;
+ 
+}
+
+.key-feature-check {
     color: var(--C_darkBlue)
 }

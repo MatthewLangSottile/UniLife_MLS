@@ -1,10 +1,12 @@
 import React, {useState, useEffect} from 'react'
 import "./HomeDetails.css"
 import axios from 'axios'
-import Bed from "../../assets/bed.svg"
-import Bathtub from "../../assets/bathtub.svg"
+import {MdOutlineBathtub} from "react-icons/md"
 import {Link, useParams} from "react-router-dom"
 import {IoIosArrowBack} from "react-icons/io"
+import {LiaBedSolid} from "react-icons/lia"
+import {AiOutlineHeart} from "react-icons/ai"
+import {AiOutlineCheck} from "react-icons/ai"
 
 
 function HomeDetails() {
@@ -13,7 +15,12 @@ function HomeDetails() {
 
   //state to hold current property data object
   const [homeDetails, setHomeDetails] = useState([])
+  //state to hold gallery featuredImage index
   const [featuredImage, setFeaturedImage] = useState(3)
+  //state to hold bedroomPrices object
+  const [homeBedroomPrices, setHomeBedroomPrices] = useState("")
+  //state to hold keyfeatures array
+  const [homeKeyFeatures, setHomeKeyFeatures] = useState([])
  
   
   //useeffect1 on load, empty array at end
@@ -24,8 +31,9 @@ function HomeDetails() {
       .then(res => {
         console.log(res.data)
         setHomeDetails(res.data)
+        setHomeBedroomPrices(res.data.bedroom_prices)
+        setHomeKeyFeatures(res.data.key_features)
 
-        // setImageGallery(buildImageGalleryArray(res.data.images))
         
         // let bedprices = res.data.bedproom_prices
         // for (var key in bedprices) {
@@ -54,44 +62,49 @@ function HomeDetails() {
 
           </div>
       </div>
-      <div className="home-details">
+      <div className="home-info">
+          <div className="home-info-top">
             <div className="home-address">
             <h6>{homeDetails?.address?.street}, {homeDetails?.address?.city}, {homeDetails?.address?.postcode}</h6>
             </div>
-            <div className="home-icon-summary">
-                <div className="home-icon-summary-TL">
-                    <div className="home-icon-value">
-                      <p className="home-icon-heading">Bedrooms</p>
-                       <img src={Bed} /><p>{homeDetails?.bedroom_count}</p>
-                    </div>
+            <div className="home-summary-grid">
+                <div className="home-summary-item">
+                       <p className="home-summary-heading">Bedrooms</p>
+                       <div className="home-summary-detail with-icon">
+                            <LiaBedSolid />
+                            <p>{homeDetails?.bedroom_count}</p>
+                        </div> 
                 </div>
-                <div className="home-icon-summary-TM">
-                    <p className="home-icon-heading">Bathrooms</p>
-                      <div className="home-icon-value">
-                      <img src={Bathtub}/><p>{homeDetails?.bathroom_count}</p>
-                    </div>
+                <div className="home-summary-item">
+                    <p className="home-summary-heading">Bathrooms</p>
+                      <div className="home-summary-detail with-icon">
+                          <MdOutlineBathtub />
+                          <p>{homeDetails?.bathroom_count}</p>
+                      </div>
                 </div>
-                <div className="home-icon-summary-TR">
-                    <p className="home-icon-heading">Property Type</p>
-                    <p className="home-icon-value">{homeDetails?.property_type}</p>
+                <div className="home-summary-item">
+                    <p className="home-summary-heading">Property Type</p>
+                    <p className="home-summary-detail">{homeDetails?.property_type}</p>
                 </div>
-                <div className="home-icon-summary-BL">
-                    <p className="home-icon-heading">Price</p>
-                    <p className="home-icon-value">{homeDetails?.rent}</p>
+                <div className="home-summary-item">
+                    <p className="home-summary-heading">Price</p>
+                    <p className="home-summary-detail">${homeDetails?.rent}</p>
                 </div>
-                <div className="home-icon-summary-BM">
-                    <p className="home-icon-heading">Furnished type</p>
-                    <p className="home-icon-value">{homeDetails?.furnished}</p>
+                <div className="home-summary-item">
+                    <p className="home-summary-heading">Furnished type</p>
+                    <p className="home-summary-detail">{homeDetails?.furnished}</p>
                 </div>
-                <div className="home-icon-summary-BR">
-                    <p className="home-icon-heading">Available from</p>
-                    <p className="home-icon-value">{homeDetails?.availability}</p>
+                <div className="home-summary-item">
+                    <p className="home-summary-heading">Available from</p>
+                    <p className="home-summary-detail">{homeDetails?.availability}</p>
                 </div>
-                <div className="home-icon-buttons">
-                  <button>Shortlist</button>
+
+            </div>
+            </div>
+            <div className="home-info-buttons">
+                  <button class="button-with-icon button-white"><AiOutlineHeart /> Shortlist</button>
                   <button>Book Viewing</button>
                 </div>
-            </div>
       </div>
       <div className="home-description">
           <h6>Description</h6>
@@ -99,11 +112,28 @@ function HomeDetails() {
       </div>
       <div className="home-bedroom-prices">
           <h6>Bedroom Prices</h6>
-          
+          <div className="bedroom-prices-detail">
+          {
+          Object.entries(homeBedroomPrices).map((value, index) => (
+            <div key={index} className="home-bedroom-price-item">
+        <p>Bedroom {index+1}</p>
+        <p>${value[1]}</p>
+            </div>
+    ))
+    }
+    </div>
       </div>
       <div className="home-key-features">
           <h6>Key features</h6>
-          {/* Map for the number of key features */}
+          {
+          homeKeyFeatures.map((item) => 
+      (
+          <div className="home-key-feature-item" key={item._id} value={item._id} >
+             <AiOutlineCheck className="key-feature-check"/>
+             <p>{item}</p>           
+          </div>
+        ))
+        } 
       </div>
 
     </div>
