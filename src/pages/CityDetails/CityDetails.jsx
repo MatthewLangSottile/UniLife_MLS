@@ -3,13 +3,8 @@ import "./CityDetails.css"
 import Slider from '../../components/Slider/Slider';
 import axios from 'axios';
 import {useParams} from "react-router-dom"
-import {Link} from "react-router-dom"
-import Bed from "../../assets/bed.svg"
-import Bathtub from "../../assets/bathtub.svg"
-import Homepin from "../../assets/homepin.svg"
-import Home from "../../assets/home.svg"
 import CityInfoImg from "../../assets/cityinfoimage.png"
-// import HousingFilter from '../../components/HousingFilter/HousingFilter';
+import HomeCard from '../../components/HomeCard/HomeCard';
 
 
 
@@ -18,9 +13,6 @@ function CityDetails() {
   //get cityid from url
   const {cityid} = useParams();
   
-  // //state to hold currently displayed properties
-  // const [displayedProperties, setDisplayedProperties] = useState([])
-
   //state to hold current city property data object
   const [cityProperties, setCityProperties] = useState([])
 
@@ -76,7 +68,7 @@ function CityDetails() {
           property_type: type
         }
         console.log(query)
-        // setHousingFilterQuery(query)
+        
         
                     // submit request for filtered properties
                     axios.post("https://unilife-server.herokuapp.com/properties/filter", {query})
@@ -114,30 +106,14 @@ function CityDetails() {
       setRentPriceArr(formatRent(res.data.response))
       setHousingTypeArr(formatHousing(res.data.response))
       setMinBathArr(formatBathrooms(res.data.response))
-      setMinBedArr(formatBedrooms(res.data.response))
-      // setDisplayedProperties(res.data.response)
-      
+      setMinBedArr(formatBedrooms(res.data.response))    
         
       })
       .catch(err => console.log(err))
     }, []
   ) 
 
-  //useeffect2 on HousingFilter query Change
-  // useEffect (
-  // () => {
-  //           // submit email to api for subscription
-  //           axios.post("https://unilife-server.herokuapp.com/properties/filter", {housingFilterQuery})
-  //           .then(function (response) {
-  //             console.log(response.data.message);
-  //             setCityProperties(response.data)
-  //           })
-  //           .catch(function (error) {
-  //             console.log(error);
-  //           });
-  //   }, [housingFilterQuery]
-  // ) 
-
+ 
   return (
     <div className="city-details-page">
       
@@ -149,7 +125,7 @@ function CityDetails() {
         <select name="min-bedroom" 
         id="min-bedroom" 
         className="housing-filter-select"
-        //NC for no change in this part of the query
+        //"" for no change in this part of the query
         onChange={(e) => buildPropertyFilter( e.target.value, "", "","")}
         >
           <option>Any bedroom</option>
@@ -205,44 +181,15 @@ function CityDetails() {
         </select>
         </div>
     </form>
-          {/* rentArr={rentPriceArr}
-          housingArr={housingTypeArr}
-          bathArr={minBathArr}
-          bedArr={minBedArr}
-          /> */}
+          
           <h2>{cityProperties?.length} homes in {cityInfo?.name}</h2>
           <div className="city-properties-grid">
+          
           {cityProperties.map((item) => 
         (
-          <div className="city-properties-card" key={item._id}>
-              <img className="city-prop-card-img" src={item?.images[0]} />
-              <div className="city-prop-card-row2">
-                  <div className="city-prop-card-row2-left">
-                      <p>${item.rent}</p>
-                      <p>pppw including bills</p>     
-                  </div>
-                  <div className="city-prop-card-row2-right">
-                      <img src={Bed} className="bed-icon" />
-                      <p>{item.bedroom_count}</p>
-                      <img src={Bathtub} className="bath-icon" />
-                      <p>{item.bathroom_count}</p>
-                  </div>
-              </div>
-              <div className="city-prop-card-row3">
-                  <div className="city-prop-card-row3-top">
-                    <p>{item.property_type}</p>
-                    <p>{item.furnished}</p>
-                  </div>
-                  <div className="city-prop-card-row3-bottom">
-                    <img src={Homepin}/>
-                    <p>{item?.address?.street}, {item?.address?.city}, {item?.address?.postcode}</p>
-                  </div>
-              </div>
-              <Link to={`/homedetails/${item?._id}`} className="city-prop-card-row4">
-                    <img src={Home}/>
-                    <p>View Home</p>
-              </Link>
-          </div>
+          <HomeCard item={item}
+          cityProperties={cityProperties} 
+          />
         ))} 
           </div>
           <div className="city-info-section">

@@ -22,9 +22,29 @@
     bottom: 0;
     background-color: rgba(0,0,0,0.5); /* Black background with opacity */
     position: absolute;
-    z-index: -1;
+    z-index: 0;
   }
 
   .slider-content {
     z-index: 0;
+    text-align: center;
   }
+
+
+
+  @media screen and (max-width: 800px) {
+    .slider-content {
+      margin: 15px;
+    }
+
+    .slider-content h1 {
+      font-size: 32px;
+      margin-bottom: 25px;
+      
+    }
+    .slider-content h4 {
+      font-size: 18px;
+      margin-bottom: 100px;
+    }
+    }
+  

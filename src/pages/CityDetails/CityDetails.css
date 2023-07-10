@@ -1,3 +1,7 @@
+.city-details-container {
+    z-index: 0;
+}
+
 .city-details-container h2 {
     margin: 50px;
 }
@@ -20,15 +24,14 @@
     border-radius: 15px;
     display: flex;
     flex-direction: column;
-
-
 }
 
 .city-prop-card-row2 {
     display: flex;
     justify-content: space-between;
     background-color: var(--C_darkBlue);
-    color: var(--C_white)
+    color: var(--C_white);
+    padding: 10px;
 }
 
 .city-prop-card-row2 p {
@@ -43,7 +46,12 @@
 .city-prop-card-row2-right {
     display: flex;
     align-items: center;
-    
+    justify-content: space-between;
+    width: 100px;    
+}
+
+.city-prop-card-row3 {
+    padding: 10px;
 }
 
 .city-prop-card-row3-top {
@@ -61,10 +69,19 @@
     text-decoration: none;
     color: var(--C_black);
     justify-content: center;
+    padding: 10px;
 }
 
 .city-info-section {
     display: flex;
+    margin: 50px;
+    background-color: var(--C_blueBG);
+    border-radius: 15px;
+    padding: 25px;
+}
+
+.city-info-text {
+    margin-right: 50px;
 }
 
 .housing-filter-form {
@@ -78,7 +95,7 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     filter: drop-shadow(0 5px 10px var(--C_darkGray));
-    z-index: 1;
+    z-index: 0;
 }
 
 .filter-col {
@@ -97,4 +114,75 @@
     margin-top: 10px;
     padding-left: 15px;
 }
+
+@media screen and (max-width: 1160px) {
+    .city-properties-grid {      
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+    }
+
+    .housing-filter-form {
+        width: 667px;
+        height: 161px;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        left: calc(50% - 334px);
+    }
+
+    .filter-col label {
+        display: none;
+    }
+
+    .city-info-section {
+        flex-direction: column;
+  }
+
+  .city-info-text {
+    text-align: center;
+    margin-bottom: 50px;
+}
+}
+  @media screen and (max-width: 800px) {
+    .city-properties-grid {      
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: auto;
+        }
+
+    .city-details-container h2 {
+        margin-top: 125px;
+    }
+
+    .housing-filter-form {
+        width: 389px;
+        height: 282px;
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+        left: calc(50% - 195px);
+        top: 345px;
+        justify-items: center;
+    }
+
+    .filter-col {
+        margin-left: 0;
+    }
+
+    .city-info-image {
+        text-align: center;
+    }
+
+    .city-info-image img {
+        width: 100%;
+    }
+    .city-info-text {
+        margin-right: 0; 
+        text-align: center;      
+    }
+
+    .city-info-text h2{
+        text-align: center;
+        width: 100%;
+        margin: 0 0 50px 0;
+    }
+
+  }
 

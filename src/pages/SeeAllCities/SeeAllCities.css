@@ -1,7 +1,13 @@
+.see-all-cities-container h2{
+    text-align: center;
+}
+
 .all-city-search-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: auto;
+    margin: 50px;
+    gap: 25px;
 }
 
 .all-city-grid-item {
@@ -10,6 +16,11 @@
     text-align: center;
     border: 1px solid var(--C_lightGray);
     border-radius: 15px;
+    min-width: 302px;
+    height: 88px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .all-city-grid-item:hover {
@@ -17,6 +28,23 @@
     color: var(--C_white)
 }
 
+
+@media screen and (max-width: 1160px) {
+    .all-city-search-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .all-city-grid-item {
+        width: 290px;
+    }
+  }
+
+  @media screen and (max-width: 800px) {
+    .all-city-search-grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+  }
 
 
 

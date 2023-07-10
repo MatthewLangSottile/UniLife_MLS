@@ -70,9 +70,13 @@ function Homepage() {
                 </div>
               </div>
             <div className="best-left-item">
+              <div className="best-left-item-left">
             <img src={Heart} className="best-section-icon"/>
+            </div>
+            <div className="best-left-item-right">
               <h3>Your favorite</h3>
               <p>Shortlist your favourite properties and send enquiries in one click.</p>
+              </div>
             </div>
             <button onClick={() => {
           window.scrollTo({top: 0, left: 0, behavior: 'smooth'});

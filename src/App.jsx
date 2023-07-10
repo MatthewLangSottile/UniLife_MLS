@@ -8,6 +8,8 @@ import AllCitiesProvider from './contexts/AllCites'
 import SeeAllCities from './pages/SeeAllCities/SeeAllCities';
 import CityDetails from './pages/CityDetails/CityDetails';
 import HomeDetails from './pages/HomeDetails/HomeDetails';
+import ShortlistProvider from './contexts/Shortlist'
+
 
 
 
@@ -15,7 +17,9 @@ function App() {
 
   return (
     <BrowserRouter>
+    <ShortlistProvider>
     <Header />
+    
     
     <AllCitiesProvider>
     
@@ -27,6 +31,7 @@ function App() {
       </Routes>
       
       </AllCitiesProvider>
+      </ShortlistProvider>
       
     <Footer />
     </BrowserRouter>

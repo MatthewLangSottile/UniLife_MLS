@@ -45,14 +45,15 @@
     justify-content: space-between;
     align-items: center;
     margin: 0 50px;
-    
+        
 }
 
 .best-left-container {
     display: flex;
     flex-direction: column;
-    /* align-items: flex-start; */
+    
     justify-content: space-evenly;
+    
 
 }
 
@@ -60,8 +61,11 @@
     position: relative;
     display: flex;
     align-items: flex-start;
+    justify-content: space-between;
     width: 440px;
     height: 148px;
+    margin-bottom: 25px;
+    
 }
 
 .best-left-item-left {
@@ -69,27 +73,25 @@
     flex-direction: column;
     align-items: space-evenly;
     justify-content: flex-start;
+    
+    
 }
 
 .best-left-item-right {
     text-align: left;
+    padding-left: 40px;
+    height: 148px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
 }
-
-/* .best-right-container {
-    position: relative;
-} */
 
 .all-cities-button {
     width: 200px;
     height: 48px;
     margin-bottom: 50px;
 }
-
-/* .phone-man-image {
-    position: absolute;
-    right: 500px;
-    top: 0;
-} */
 
 .search-compare-button {
     width: 240px;
@@ -144,4 +146,52 @@
     border-radius: 15px;
     position: absolute;
   
+  }
+
+
+  @media screen and (max-width: 1160px) {
+    .top-cities-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(5, 300px);
+        gap: 30px;
+        color: var(--C_white);    
+        margin: 50px;
+        justify-self: center;
+       }
+
+    .best-container {
+        display: none;
+    }
+
+    .compare-three-container {
+        flex-direction: column;   
+    }
+
+    .compare-container {
+        height: 1036px;
+        margin-bottom: 50px;
+    }
+  }
+
+  @media screen and (max-width: 800px) {
+    .top-cities-container {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(9, 300px);
+        gap: 30px;
+        color: var(--C_white);    
+        margin: 50px;
+        justify-self: center;
+       }
+
+    .best-container {
+        display: none;
+    }
+
+    .compare-container {
+       min-width: 370px;
+    }
+
+
   }

@@ -27,18 +27,19 @@
     width: 235px;
 }
 
-.header-link {
-    text-decoration: none;
+.header-button {
+    
     color: var(--C_white);
+    background-color: transparent;
 }
 
-.header-link-icon {
+.header-button-icon {
     margin-right: 10px;
 }
 
 .contact-us-form {
     display: grid;
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns: repeat(2,400px);
     grid-template-rows: repeat(7, auto);
     grid-template-areas:
     "nameLab emailLab"
@@ -49,6 +50,42 @@
     "user msg"
     ". sub";
     gap: 35px;
+}
+
+.contact-us-form input, select {
+    border-radius: 15px;
+    border: 1px solid var(--C_lightGray);
+    height: 56px;
+}
+
+
+.contact-us-form input::placeholder, textarea::placeholder {
+    padding-left: 20px;
+    color: var(--C_lightGray);
+}
+
+textarea::placeholder {
+    padding-top: 20px;
+
+}
+
+.contact-us-form textarea {
+    border-radius: 15px;
+    border: 1px solid var(--C_lightGray);
+    /* height: 56px; */
+}
+
+.contact-us-form select {
+    border-radius: 15px;
+    border: 1px solid var(--C_lightGray);
+    height: 56px;
+    padding-left: 20px;
+    color: var(--C_lightGray)
+}
+
+.form-submit {
+    width: 400px;
+    height: 56px;
 }
 
 .contact-modal-toprow {

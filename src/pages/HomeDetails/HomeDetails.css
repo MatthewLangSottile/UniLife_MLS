@@ -7,12 +7,16 @@
     "imagegallery home-info"
     "description bedprices"
     "keyfeatures bedprices";
-    gap: 25px;
-    
+    gap: 35px;
+    margin: 50px;
 }
 
 .home-image-gallery {
-    grid-area: imagegallery
+    grid-area: imagegallery;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .home-featured-image {
@@ -25,7 +29,7 @@
     display: flex;
     justify-content: space-between;
     width: 620px;
-    
+
 }
 
 .home-single-image {
@@ -115,11 +119,19 @@
 .button-white {
     background-color: var(--C_white);
     color: var(--C_black);
-    border: 1px solid var(--C_lightGray);
-    
+    border: 1px solid var(--C_lightGray);  
 }
 
-.home-bedroom-price-item {
+.button-black {
+    background-color: var(--C_black);
+    color: var(--C_white);
+
+}
+
+.home-bedroom-price-item {.contact-us-form input::placeholder, textarea::placeholder {
+    padding-left: 20px;
+    color: var(--C_lightGray);
+}
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid var(--C_lightGray);
@@ -139,3 +151,55 @@
 .key-feature-check {
     color: var(--C_darkBlue)
 }
+
+.booking-modal-toprow {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+@media screen and (max-width: 1370px) {
+    .home-details-container {
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: auto;
+        grid-template-areas: 
+        "backtosearch "
+        "imagegallery"
+        "home-info"
+        "description"
+        "keyfeatures"
+        "bedprices"
+        ;
+
+    }
+  }
+
+  @media screen and (max-width: 800px) {
+    .home-featured-image {
+        width: 100%;
+        height: auto;
+     }
+
+     .home-image-selection {
+        width: 95%;
+        margin-top: 10px;
+    
+    }
+    
+    .home-single-image {
+        width: calc(95% / 4);
+        border-radius: 15px;
+    }
+
+    .home-details-container {
+        display: flex;
+        flex-direction: column;
+        margin: 20px;
+    }
+
+    .home-summary-grid {
+        gap: 15px;
+        
+    }
+
+  }

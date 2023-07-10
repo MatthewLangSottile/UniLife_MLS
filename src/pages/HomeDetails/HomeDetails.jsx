@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 import "./HomeDetails.css"
 import axios from 'axios'
 import {MdOutlineBathtub} from "react-icons/md"
@@ -9,12 +9,15 @@ import {AiOutlineHeart} from "react-icons/ai"
 import {AiOutlineCheck} from "react-icons/ai"
 import Modal from "react-modal"
 import AddHome from "../../assets/addhome.svg"
+import { Shortlist } from '../../contexts/Shortlist';
 
 
 function HomeDetails() {
 
   const {homeid} = useParams();
 
+  const {shortlist, addProperty, removeProperty} = useContext(Shortlist)
+  
   //state to hold current property data object
   const [homeDetails, setHomeDetails] = useState([])
   //state to hold gallery featuredImage index
@@ -24,7 +27,7 @@ function HomeDetails() {
   //state to hold keyfeatures array
   const [homeKeyFeatures, setHomeKeyFeatures] = useState([])
     //state to control bookviewing modal
-    const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
 
     const customStyles = {
       content: {
@@ -54,21 +57,11 @@ function HomeDetails() {
         setHomeDetails(res.data)
         setHomeBedroomPrices(res.data.bedroom_prices)
         setHomeKeyFeatures(res.data.key_features)
-
-        
-        // let bedprices = res.data.bedproom_prices
-        // for (var key in bedprices) {
-        //   if (bedprices.hasOwnProperty(key)) {
-        //     bedprices[key]
-        //   }
-        // }
              
       })
       .catch(err => console.log(err))
     }, []
   ) 
-
-
 
   return (
     <div className="home-details-container">
@@ -123,7 +116,16 @@ function HomeDetails() {
             </div>
             </div>
             <div className="home-info-buttons">
-                  <button class="button-with-icon button-white"><AiOutlineHeart /> Shortlist</button>
+                    {
+                    shortlist.find(item => item.id === homeid) ?
+                   <button className="button-with-icon button-black" onClick={()=>removeProperty(homeid)} >               
+                   <AiOutlineHeart />Shortlist</button>
+                    :
+                    <button className="button-with-icon button-white" onClick={()=>addProperty(homeDetails)}>
+                    <AiOutlineHeart />Shortlist</button>
+                    
+                    }
+
                   <button onClick={()=>setIsOpen(true)}>Book Viewing</button>
                   <Modal 
             isOpen={isOpen}
@@ -141,13 +143,13 @@ function HomeDetails() {
             </div>
             <form className="contact-us-form">
                 <label className="name-label" htmlFor="name">Name</label>
-                <input className="name-input" type="text" id="name"/>
+                <input className="name-input" type="text" id="name" placeholder="Enter your name"/>
                 <label className="email-label" htmlFor="email">Email</label>
-                <input className="email-input" type="email" id="email"/>
+                <input className="email-input" type="email" id="email" placeholder="Enter your email address"/>
                 <label className="phone-label" htmlFor="phonenumber">Phone Number</label>
-                <input className="phone-input" type="tel" id="phonenumber"/>
+                <input className="phone-input" type="tel" id="phonenumber" placeholder="Enter your phone number"/>
                 <label className="message-label" htmlFor="message">Message</label>
-                <textarea className="message-area" id="message" rows="4"></textarea>
+                <textarea className="message-area" id="message" rows="4" placeholder="Enter your message"></textarea>
                 <button className="form-submit" type="submit">Submit</button>
             </form>
           </Modal>
@@ -156,6 +158,18 @@ function HomeDetails() {
       <div className="home-description">
           <h6>Description</h6>
           <p>{homeDetails?.property_description}</p>
+      </div>
+      <div className="home-key-features">
+          <h6>Key features</h6>
+          {
+          homeKeyFeatures.map((item,index) => 
+      (
+          <div className="home-key-feature-item" key={index} value={item} >
+             <AiOutlineCheck className="key-feature-check"/>
+             <p>{item}</p>           
+          </div>
+        ))
+        } 
       </div>
       <div className="home-bedroom-prices">
           <h6>Bedroom Prices</h6>
@@ -170,18 +184,7 @@ function HomeDetails() {
     }
     </div>
       </div>
-      <div className="home-key-features">
-          <h6>Key features</h6>
-          {
-          homeKeyFeatures.map((item) => 
-      (
-          <div className="home-key-feature-item" key={item._id} value={item._id} >
-             <AiOutlineCheck className="key-feature-check"/>
-             <p>{item}</p>           
-          </div>
-        ))
-        } 
-      </div>
+   
 
     </div>
   )

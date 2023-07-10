@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import "./Header.css"
 import {MdOutlineHolidayVillage} from "react-icons/md"
 import logo from "../../assets/UniLife.svg"
@@ -6,11 +6,19 @@ import {AiOutlineHeart, AiOutlineMail} from "react-icons/ai"
 import {Link} from "react-router-dom"
 import Modal from "react-modal"
 import contact from "../../assets/contact.svg"
+import { Shortlist } from '../../contexts/Shortlist';
+import HomeCard from '../HomeCard/HomeCard';
 
-function Header() {
+
+function Header(cityProperties) {
 
   //state to control contact us modal
-  const [isOpen, setIsOpen] = useState(false)
+  const [isContactOpen, setIsContactOpen] = useState(false)
+
+   //state to control shortlist modal
+   const [isShortlistOpen, setIsShortlistOpen] = useState(false)
+
+   const {shortlist, setShortlist} = useContext(Shortlist)
 
   const customStyles = {
     content: {
@@ -25,7 +33,8 @@ function Header() {
       borderRadius: "15px",
       display: "flex",
       flexDirection: "column",
-      justifyContent: "space-evenly"
+      justifyContent: "space-evenly",
+      zIndex: "2"
     },
   };
 
@@ -41,17 +50,34 @@ Modal.setAppElement(document.getElementById("root"));
         </div>
         </Link>
         <div className="header-right">
-            <Link className="header-link">
-            <AiOutlineHeart className="header-link-icon"/>
+            <button className="header-button" onClick={()=>setIsShortlistOpen(true)}>
+            <AiOutlineHeart className="header-button-icon"/>
             Shortlist
-            </Link>
-            <button className="header-link" onClick={()=> setIsOpen(true)}>
-              <AiOutlineMail className="header-link-icon" />
+            </button>
+            <Modal 
+            isOpen={isShortlistOpen}
+            onRequestClose={()=>setIsShortlistOpen(false)}
+            style={customStyles}
+            contentLabel="Shortlist Modal"
+            >
+            <div className="shortlist-modal-toprow">
+                <h2>Property Shortlist</h2>
+                {/* {cityProperties.map((item) => 
+        (
+          <HomeCard item={item} 
+          />
+        ))}  */}
+             <button onClick={()=>setShortlist([])}>Clear Shortlist</button>   
+            </div>
+            
+          </Modal>
+            <button className="header-button" onClick={()=> setIsContactOpen(true)}>
+              <AiOutlineMail className="header-button-icon" />
             Contact Us
             </button>
             <Modal 
-            isOpen={isOpen}
-            onRequestClose={()=>setIsOpen(false)}
+            isOpen={isContactOpen}
+            onRequestClose={()=>setIsContactOpen(false)}
             style={customStyles}
             contentLabel="Contact Us Modal"
             >
@@ -65,13 +91,13 @@ Modal.setAppElement(document.getElementById("root"));
             </div>
             <form className="contact-us-form">
                 <label className="name-label" htmlFor="name">Name</label>
-                <input className="name-input" type="text" id="name"/>
+                <input className="name-input" type="text" id="name" placeholder="Enter your name"/>
                 <label className="email-label" htmlFor="email">Email</label>
-                <input className="email-input" type="email" id="email"/>
+                <input className="email-input" type="email" id="email" placeholder="Enter your email address"/>
                 <label className="phone-label" htmlFor="phonenumber">Phone Number</label>
-                <input className="phone-input" type="tel" id="phonenumber"/>
+                <input className="phone-input" type="tel" id="phonenumber" placeholder="Enter your phone number"/>
                 <label className="message-label" htmlFor="message">Message</label>
-                <textarea className="message-area" id="message" rows="4"></textarea>
+                <textarea className="message-area" id="message" rows="4" placeholder="Enter your message"></textarea>
                 <label className="user-type-label" htmlFor="userTypeSelect">Are you a...</label>
                 <select className="user-type-select" id="userTypeSelect">
                   <option>Student</option>

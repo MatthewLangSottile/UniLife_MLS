@@ -8,7 +8,7 @@ export default function AllCitiesProvider(props) {
 
     useEffect(
         ()=>{
-          console.log("page loaded")
+          console.log("allcities context loaded")
            //default api call for the cities
           //https://unilife-server.herokuapp.com/cities
         

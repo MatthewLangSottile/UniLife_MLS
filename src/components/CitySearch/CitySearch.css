@@ -5,6 +5,7 @@
     border-radius: 15px;
     position: absolute;
     bottom: 0;
+    left: calc(50% - 556px);
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -13,7 +14,7 @@
 }
 
 .city-search-select {
-    min-width: 558px;
+    width: 558px;
     height: 48px;
     border-radius: 10px;
     padding: 5px 25px;
@@ -26,3 +27,35 @@
     height: 48px;
     border-radius: 10px;
 }
+
+
+@media screen and (max-width: 1160px) {
+    .city-search-form {
+        width: 638px;
+        left: calc(50% - 319px);
+    }
+
+    .city-search-select {
+        width: 320px;
+    }
+
+    .city-search-button {
+        width: 200px;
+    }
+  }
+
+  @media screen and (max-width: 800px) {
+    .city-search-form {
+        width: 320px;
+        left: calc(50% - 160px);
+        flex-direction: column;
+    }
+
+    .city-search-select {
+        width: 238px;
+    }
+
+    .city-search-button {
+        width: 145px;
+    }
+  }
